@@ -51,25 +51,26 @@ A quiet place to keep the days.
 
 ## 截图
 
+> 跑起来之后，大概是这个样子。
+> 里面的照片和视频是生成的占位图——**这里不放任何人的真实日子。**
+
 ![首页](docs/screenshots/03-home.png)
 
-| 日记 · 双人同日各写一段 | 时间线 |
+| 日记 · 同一天，两段字迹 | 时间线 · 第一次，和后来每一次 |
 |---|---|
 | ![日记](docs/screenshots/02-diary.png) | ![时间线](docs/screenshots/04-timeline.png) |
 
-| 照片墙 | 视频影院 |
+| 照片墙 · 留下来的那些天 | 视频影院 · 会动的那几天 |
 |---|---|
 | ![照片墙](docs/screenshots/05-gallery.png) | ![视频影院](docs/screenshots/06-videos.png) |
 
-| 我们的歌 | 时间胶囊 |
+| 我们的歌 · 每首歌想说的话 | 时间胶囊 · 还没到拆的时候 |
 |---|---|
 | ![我们的歌](docs/screenshots/07-playlist.png) | ![时间胶囊](docs/screenshots/09-capsules.png) |
 
-| 数据统计 | 登录 |
+| 数据统计 · 一起走了多少天 | 登录 · 门在这边 |
 |---|---|
 | ![数据统计](docs/screenshots/08-stats.png) | ![登录](docs/screenshots/01-login.png) |
-
-> 截图里的照片和视频是生成的占位图，不是真实内容——仓库里不带任何人的私人数据。
 
 ## 快速开始
 
