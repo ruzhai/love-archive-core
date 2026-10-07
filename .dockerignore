@@ -1,0 +1,25 @@
+node_modules
+.next
+.git
+.github
+.gitignore
+
+# 运行时数据 —— 绝不能打进镜像，否则镜像里会带着本机的日记和照片
+data
+uploads
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# 本地配置和密钥，不该进镜像层
+.env
+.env.*
+!.env.example
+
+npm-debug.log*
+Dockerfile
+docker-compose.yml
+.dockerignore
+README.md
+LICENSE

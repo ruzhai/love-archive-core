@@ -1,0 +1,62 @@
+services:
+  app:
+    build:
+      context: .
+      # NEXT_PUBLIC_* 是构建期变量：改完这里要 `docker compose up -d --build` 重新构建，
+      # 只 restart 不会生效。
+      args:
+        NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-}
+        NEXT_PUBLIC_SITE_NAME_CN: ${NEXT_PUBLIC_SITE_NAME_CN:-}
+        NEXT_PUBLIC_SITE_SUPERTITLE: ${NEXT_PUBLIC_SITE_SUPERTITLE:-}
+        NEXT_PUBLIC_SITE_TAGLINE: ${NEXT_PUBLIC_SITE_TAGLINE:-}
+        NEXT_PUBLIC_SITE_DESCRIPTION: ${NEXT_PUBLIC_SITE_DESCRIPTION:-}
+        NEXT_PUBLIC_START_DATE: ${NEXT_PUBLIC_START_DATE:-}
+        NEXT_PUBLIC_RELATIONSHIP_DATE: ${NEXT_PUBLIC_RELATIONSHIP_DATE:-}
+        NEXT_PUBLIC_AUTHOR1_NAME: ${NEXT_PUBLIC_AUTHOR1_NAME:-}
+        NEXT_PUBLIC_AUTHOR1_EMOJI: ${NEXT_PUBLIC_AUTHOR1_EMOJI:-}
+        NEXT_PUBLIC_AUTHOR2_NAME: ${NEXT_PUBLIC_AUTHOR2_NAME:-}
+        NEXT_PUBLIC_AUTHOR2_EMOJI: ${NEXT_PUBLIC_AUTHOR2_EMOJI:-}
+
+    image: love-archive-core:latest
+    container_name: love-archive
+    restart: unless-stopped
+
+    ports:
+      # 改成 "8080:3000" 之类即可换对外端口
+      - "${APP_PORT:-3000}:3000"
+
+    environment:
+      # 必填。不设的话生产模式启动即失败——这是故意的，缺签名密钥等于没有鉴权。
+      # 生成：openssl rand -base64 48
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET 必须设置，先生成：openssl rand -base64 48}
+
+      # 只在首次启动建账号时用到，不填会生成随机密码并打印在日志里。
+      ADMIN_PASSWORDS: ${ADMIN_PASSWORDS:-}
+
+      # 反代上了 HTTPS 就改成 true。直接 http:// IP:端口 访问时必须保持 false，
+      # 否则浏览器的 Secure cookie 发不出去，表现为「密码对了但一直没登录」。
+      SECURE_COOKIES: ${SECURE_COOKIES:-false}
+
+      # 这两个要**运行期**也传一份，其余 NEXT_PUBLIC_* 只作为 build args 就够了。
+      # 原因：entrypoint 里的 seed 是 `tsx` 直接跑的脚本，不经过 Next 的构建期替换，
+      # 读不到 build args，于是它建账号时把显示名写成默认的「我 / 你」；而页面上显示的是
+      # 构建期替换进去的名字。两者不一致的表现是「界面里到处叫阿明，右上角登录名却是我」。
+      NEXT_PUBLIC_AUTHOR1_NAME: ${NEXT_PUBLIC_AUTHOR1_NAME:-}
+      NEXT_PUBLIC_AUTHOR2_NAME: ${NEXT_PUBLIC_AUTHOR2_NAME:-}
+
+    volumes:
+      # SQLite 数据库文件
+      - ./data:/app/data
+      # 上传的照片、视频，以及生成的缩略图缓存
+      - ./uploads:/app/uploads
+
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/login').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s

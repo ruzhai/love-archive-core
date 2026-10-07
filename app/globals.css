@@ -1,0 +1,951 @@
+@import "tailwindcss";
+
+/* ==================== Design Tokens ==================== */
+@theme inline {
+  /* Background system */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-button: var(--bg-button);
+  --color-bg-button-hover: var(--bg-button-hover);
+
+  /* Text system */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-accent: var(--text-accent);
+
+  /* Accent - warm amber/gold (dark) -> rose/terracotta (light) */
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-rose: var(--accent-rose);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-glow: var(--accent-glow);
+
+  /* Border system */
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-border-active: var(--border-active);
+
+  /* WeChat chat bubble colors */
+  --color-chat-sent-bg: var(--chat-sent-bg);
+  --color-chat-sent-text: var(--chat-sent-text);
+  --color-chat-received-bg: var(--chat-received-bg);
+  --color-chat-received-text: var(--chat-received-text);
+  --color-chat-area-bg: var(--chat-area-bg);
+
+  /* Navbar */
+  --color-nav-bg: var(--nav-bg);
+  --color-nav-bg-scrolled: var(--nav-bg-scrolled);
+  --color-nav-logo: var(--nav-logo);
+  --color-nav-logo-hover: var(--nav-logo-hover);
+  --color-nav-link: var(--nav-link);
+  --color-nav-link-hover: var(--nav-link-hover);
+  --color-nav-link-active: var(--nav-link-active);
+  --color-nav-toggle-bg: var(--nav-toggle-bg);
+  --color-nav-toggle-bg-hover: var(--nav-toggle-bg-hover);
+  --color-nav-toggle-dot: var(--nav-toggle-dot);
+  --color-nav-mobile-bg: var(--nav-mobile-bg);
+  --color-nav-mobile-link: var(--nav-mobile-link);
+  --color-nav-mobile-link-hover: var(--nav-mobile-link-hover);
+  --color-nav-mobile-link-active: var(--nav-mobile-link-active);
+  --color-nav-mobile-border: var(--nav-mobile-border);
+  --color-nav-mobile-num: var(--nav-mobile-num);
+  --color-nav-mobile-tagline: var(--nav-mobile-tagline);
+
+  /* Page headers */
+  --color-page-supertitle: var(--page-supertitle);
+  --color-page-heading: var(--page-heading);
+  --color-page-subtitle: var(--page-subtitle);
+  --color-page-footer-border: var(--page-footer-border);
+  --color-page-footer-text: var(--page-footer-text);
+
+  /* Chat page structural */
+  --color-chat-topbar-bg: var(--chat-topbar-bg);
+  --color-chat-topbar-border: var(--chat-topbar-border);
+  --color-chat-toggle-bg: var(--chat-toggle-bg);
+  --color-chat-toggle-active-bg: var(--chat-toggle-active-bg);
+  --color-chat-toggle-active-text: var(--chat-toggle-active-text);
+  --color-chat-toggle-inactive-text: var(--chat-toggle-inactive-text);
+  --color-chat-sidebar-bg: var(--chat-sidebar-bg);
+  --color-chat-sidebar-border: var(--chat-sidebar-border);
+  --color-chat-sidebar-item-active-bg: var(--chat-sidebar-item-active-bg);
+  --color-chat-sidebar-item-active-text: var(--chat-sidebar-item-active-text);
+  --color-chat-sidebar-item-text: var(--chat-sidebar-item-text);
+  --color-chat-sidebar-month: var(--chat-sidebar-month);
+  --color-chat-date-badge-bg: var(--chat-date-badge-bg);
+  --color-chat-date-badge-border: var(--chat-date-badge-border);
+  --color-chat-date-badge-text: var(--chat-date-badge-text);
+  --color-chat-divider: var(--chat-divider);
+  --color-chat-empty-text: var(--chat-empty-text);
+
+  /* Hero */
+  --color-hero-supertitle: var(--hero-supertitle);
+  --color-hero-heading: var(--hero-heading);
+  --color-hero-subtitle: var(--hero-subtitle);
+  --color-hero-desc: var(--hero-desc);
+  --color-hero-together-label: var(--hero-together-label);
+  --color-hero-together-number: var(--hero-together-number);
+  --color-hero-together-line: var(--hero-together-line);
+  --color-hero-together-since: var(--hero-together-since);
+  --color-hero-start-date: var(--hero-start-date);
+  --color-hero-scroll-text: var(--hero-scroll-text);
+  --color-hero-scroll-line-from: var(--hero-scroll-line-from);
+
+  /* Footer */
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-border: var(--footer-border);
+  --color-footer-logo: var(--footer-logo);
+  --color-footer-tagline: var(--footer-tagline);
+  --color-footer-link: var(--footer-link);
+  --color-footer-link-hover: var(--footer-link-hover);
+  --color-footer-copyright: var(--footer-copyright);
+
+  /* Modal */
+  --color-modal-overlay: var(--modal-overlay);
+  --color-modal-bg: var(--modal-bg);
+  --color-modal-border: var(--modal-border);
+  --color-modal-input-border: var(--modal-input-border);
+  --color-modal-input-text: var(--modal-input-text);
+
+  /* Buttons */
+  --color-btn-ghost-text: var(--btn-ghost-text);
+  --color-btn-ghost-hover: var(--btn-ghost-hover);
+  --color-btn-danger-text: var(--btn-danger-text);
+  --color-btn-danger-hover: var(--btn-danger-hover);
+
+  /* Timeline */
+  --color-timeline-line-via: var(--timeline-line-via);
+  --color-timeline-dot-bg: var(--timeline-dot-bg);
+  --color-timeline-dot-border: var(--timeline-dot-border);
+
+  /* Stats */
+  --color-stats-bar-track: var(--stats-bar-track);
+  --color-stats-bar-msg: var(--stats-bar-msg);
+  --color-stats-bar-event: var(--stats-bar-event);
+  --color-stats-event-type-bg: var(--stats-event-type-bg);
+  --color-stats-event-type-border: var(--stats-event-type-border);
+
+  /* Private */
+  --color-private-letter-bg: var(--private-letter-bg);
+  --color-private-letter-border: var(--private-letter-border);
+
+  /* Card */
+  --color-card-bg: var(--card-bg);
+
+  /* Font family */
+  --font-display: "Lara", "Inter", "Helvetica Neue", "Arial", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body: "Lara", "Inter", "Helvetica Neue", "Arial", "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-scale-in: scale-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-sexy-light: sexy-light 40s linear infinite;
+  --animate-button-light: button-light 3s linear infinite;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-grain: grain 8s steps(10) infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
+}
+
+/* ==================== Keyframes ==================== */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes sexy-light {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes button-light {
+  0%, 100% { transform: translate(-30%, 20%) scale(1.1); }
+  25% { transform: translate(-30%, -20%) scale(1.1); }
+  50% { transform: translate(30%, -20%) scale(1.1); }
+  70% { transform: translate(30%, 20%) scale(1.1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-6px) rotate(1deg); }
+  66% { transform: translateY(3px) rotate(-1deg); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes bento-rise {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-bento-rise {
+  animation: bento-rise 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+/* ==================== Theme: DARK (default) ==================== */
+:root {
+  /* Backgrounds */
+  --bg-primary: #080808;
+  --bg-secondary: #0a0a0a;
+  --bg-card: #161616;
+  --bg-elevated: #1e1e1e;
+  --bg-button: #1d1d1d;
+  --bg-button-hover: #4f4f4f;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #a0a0a0;
+  --text-accent: #d0d6d4;
+
+  /* Accent */
+  --accent: #d4a574;
+  --accent-light: #e8c9a8;
+  --accent-dark: #b8895a;
+  --accent-rose: #b87b6c;
+  --accent-subtle: rgba(212, 165, 116, 0.15);
+  --accent-glow: rgba(212, 165, 116, 0.3);
+
+  /* Borders */
+  --border-default: rgba(255, 255, 255, 0.15);
+  --border-strong: rgba(255, 255, 255, 0.30);
+  --border-active: rgba(255, 255, 255, 0.5);
+
+  /* WeChat bubble colors - dark mode */
+  --chat-sent-bg: #2B5A1E;
+  --chat-sent-text: #E8F5E0;
+  --chat-received-bg: #1E1E1E;
+  --chat-received-text: #E0E0E0;
+  --chat-area-bg: #0a0a0a;
+
+  /* Page background & foreground */
+  --background: #080808;
+  --foreground: #ffffff;
+
+  /* Navbar / top bar */
+  --topbar-bg: rgba(0, 0, 0, 0.9);
+
+  /* ===== Component-level theme tokens ===== */
+  /* Navbar */
+  --nav-bg: transparent;
+  --nav-bg-scrolled: rgba(0, 0, 0, 0.85);
+  --nav-logo: rgba(255, 255, 255, 0.85);
+  --nav-logo-hover: #ffffff;
+  --nav-link: rgba(255, 255, 255, 0.55);
+  --nav-link-hover: rgba(255, 255, 255, 0.85);
+  --nav-link-active: #ffffff;
+  --nav-toggle-bg: rgba(255, 255, 255, 0.18);
+  --nav-toggle-bg-hover: rgba(255, 255, 255, 0.30);
+  --nav-toggle-dot: #3D3533;
+  --nav-mobile-bg: #080808;
+  --nav-mobile-link: rgba(255, 255, 255, 0.45);
+  --nav-mobile-link-hover: rgba(255, 255, 255, 0.80);
+  --nav-mobile-link-active: #ffffff;
+  --nav-mobile-border: rgba(255, 255, 255, 0.08);
+  --nav-mobile-num: rgba(255, 255, 255, 0.30);
+  --nav-mobile-tagline: rgba(255, 255, 255, 0.30);
+
+  /* Page headers */
+  --page-supertitle: rgba(255, 255, 255, 0.40);
+  --page-heading: #ffffff;
+  --page-subtitle: rgba(255, 255, 255, 0.45);
+  --page-footer-border: rgba(255, 255, 255, 0.08);
+  --page-footer-text: rgba(255, 255, 255, 0.25);
+
+  /* Chat page */
+  --chat-topbar-bg: rgba(0, 0, 0, 0.9);
+  --chat-topbar-border: rgba(255, 255, 255, 0.08);
+  --chat-toggle-bg: #1a1a1a;
+  --chat-toggle-active-bg: rgba(255, 255, 255, 0.12);
+  --chat-toggle-active-text: #ffffff;
+  --chat-toggle-inactive-text: rgba(255, 255, 255, 0.35);
+  --chat-sidebar-bg: #0a0a0a;
+  --chat-sidebar-border: rgba(255, 255, 255, 0.06);
+  --chat-sidebar-item-active-bg: rgba(255, 255, 255, 0.08);
+  --chat-sidebar-item-active-text: rgba(255, 255, 255, 0.85);
+  --chat-sidebar-item-text: rgba(255, 255, 255, 0.40);
+  --chat-sidebar-month: rgba(255, 255, 255, 0.25);
+  --chat-date-badge-bg: rgba(26, 26, 26, 0.9);
+  --chat-date-badge-border: rgba(255, 255, 255, 0.06);
+  --chat-date-badge-text: rgba(255, 255, 255, 0.45);
+  --chat-divider: rgba(255, 255, 255, 0.06);
+  --chat-empty-text: rgba(255, 255, 255, 0.25);
+
+  /* Hero */
+  --hero-supertitle: rgba(255, 255, 255, 0.45);
+  --hero-heading: #ffffff;
+  --hero-subtitle: rgba(255, 255, 255, 0.55);
+  --hero-desc: rgba(255, 255, 255, 0.35);
+  --hero-together-label: rgba(255, 255, 255, 0.30);
+  --hero-together-number: #ffffff;
+  --hero-together-line: rgba(255, 255, 255, 0.15);
+  --hero-together-since: rgba(255, 255, 255, 0.18);
+  --hero-start-date: rgba(255, 255, 255, 0.25);
+  --hero-scroll-text: rgba(255, 255, 255, 0.25);
+  --hero-scroll-line-from: rgba(255, 255, 255, 0.30);
+
+  /* Footer */
+  --footer-bg: #080808;
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --footer-logo: rgba(255, 255, 255, 0.85);
+  --footer-tagline: rgba(255, 255, 255, 0.30);
+  --footer-link: rgba(255, 255, 255, 0.40);
+  --footer-link-hover: rgba(255, 255, 255, 0.65);
+  --footer-copyright: rgba(255, 255, 255, 0.25);
+
+  /* Card */
+  --card-bg: #161616;
+  --card-shadow: none;
+
+  /* Timeline */
+  --timeline-line-from: transparent;
+  --timeline-line-via: rgba(255, 255, 255, 0.08);
+  --timeline-dot-bg: rgba(255, 255, 255, 0.30);
+  --timeline-dot-border: rgba(255, 255, 255, 0.15);
+
+  /* Stats */
+  --stats-bar-track: #0f0f0f;
+  --stats-bar-msg: rgba(255, 255, 255, 0.12);
+  --stats-bar-event: rgba(255, 255, 255, 0.18);
+  --stats-event-type-bg: #0f0f0f;
+  --stats-event-type-border: rgba(255, 255, 255, 0.06);
+
+  /* Private */
+  --private-letter-bg: #0f0f0f;
+  --private-letter-border: rgba(255, 255, 255, 0.06);
+
+  /* Modal */
+  --modal-overlay: rgba(0, 0, 0, 0.7);
+  --modal-bg: #0f0f0f;
+  --modal-border: rgba(255, 255, 255, 0.10);
+  --modal-input-border: rgba(255, 255, 255, 0.10);
+  --modal-input-text: rgba(255, 255, 255, 0.75);
+
+  /* Buttons / interactive */
+  --btn-ghost-text: rgba(255, 255, 255, 0.30);
+  --btn-ghost-hover: rgba(255, 255, 255, 0.50);
+  --btn-danger-text: rgba(255, 255, 255, 0.25);
+  --btn-danger-hover: rgba(255, 100, 80, 0.65);
+}
+
+/* ==================== Theme: LIGHT ==================== */
+[data-theme="light"] {
+  /* Backgrounds — warm paper / love letter aesthetic */
+  --bg-primary: #FCFAF7;
+  --bg-secondary: #F7F3ED;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #FAF6F1;
+  --bg-button: #F2ECE4;
+  --bg-button-hover: #E8E0D6;
+
+  /* Text — warm charcoal, never harsh black */
+  --text-primary: #3D3533;
+  --text-secondary: #6B5E58;
+  --text-muted: #8A7E76;
+  --text-accent: #5C4F49;
+
+  /* Accent — dried rose / terracotta (deeper, richer) */
+  --accent: #B85C4A;
+  --accent-light: #E8B4A8;
+  --accent-dark: #964838;
+  --accent-rose: #C98078;
+  --accent-subtle: rgba(184, 92, 74, 0.12);
+  --accent-glow: rgba(184, 92, 74, 0.22);
+
+  /* Borders — warm, soft */
+  --border-default: rgba(61, 53, 51, 0.12);
+  --border-strong: rgba(61, 53, 51, 0.22);
+  --border-active: rgba(61, 53, 51, 0.4);
+
+  /* WeChat bubble colors — authentic WeChat green */
+  --chat-sent-bg: #95EC69;
+  --chat-sent-text: #0B1A08;
+  --chat-received-bg: #FFFFFF;
+  --chat-received-text: #2C2C2C;
+  --chat-area-bg: #EDEDED;
+
+  /* Page background & foreground */
+  --background: #FCFAF7;
+  --foreground: #3D3533;
+
+  /* Navbar / top bar */
+  --topbar-bg: rgba(252, 250, 247, 0.92);
+
+  /* ===== Component-level theme tokens (light) ===== */
+  /* Navbar */
+  --nav-bg: transparent;
+  --nav-bg-scrolled: rgba(252, 250, 247, 0.85);
+  --nav-logo: rgba(61, 53, 51, 0.85);
+  --nav-logo-hover: #3D3533;
+  --nav-link: rgba(61, 53, 51, 0.50);
+  --nav-link-hover: rgba(61, 53, 51, 0.75);
+  --nav-link-active: #3D3533;
+  --nav-toggle-bg: rgba(61, 53, 51, 0.12);
+  --nav-toggle-bg-hover: rgba(61, 53, 51, 0.20);
+  --nav-toggle-dot: #FCFAF7;
+  --nav-mobile-bg: #FCFAF7;
+  --nav-mobile-link: rgba(61, 53, 51, 0.45);
+  --nav-mobile-link-hover: rgba(61, 53, 51, 0.70);
+  --nav-mobile-link-active: #3D3533;
+  --nav-mobile-border: rgba(61, 53, 51, 0.10);
+  --nav-mobile-num: rgba(61, 53, 51, 0.30);
+  --nav-mobile-tagline: rgba(61, 53, 51, 0.30);
+
+  /* Page headers */
+  --page-supertitle: rgba(61, 53, 51, 0.45);
+  --page-heading: #3D3533;
+  --page-subtitle: rgba(61, 53, 51, 0.55);
+  --page-footer-border: rgba(61, 53, 51, 0.08);
+  --page-footer-text: rgba(61, 53, 51, 0.30);
+
+  /* Chat page */
+  --chat-topbar-bg: rgba(252, 250, 247, 0.92);
+  --chat-topbar-border: rgba(61, 53, 51, 0.08);
+  --chat-toggle-bg: #F2ECE4;
+  --chat-toggle-active-bg: rgba(255, 255, 255, 0.75);
+  --chat-toggle-active-text: #3D3533;
+  --chat-toggle-inactive-text: rgba(61, 53, 51, 0.40);
+  --chat-sidebar-bg: #F7F3ED;
+  --chat-sidebar-border: rgba(61, 53, 51, 0.06);
+  --chat-sidebar-item-active-bg: rgba(255, 255, 255, 0.75);
+  --chat-sidebar-item-active-text: #3D3533;
+  --chat-sidebar-item-text: rgba(61, 53, 51, 0.45);
+  --chat-sidebar-month: rgba(61, 53, 51, 0.25);
+  --chat-date-badge-bg: rgba(242, 236, 228, 0.9);
+  --chat-date-badge-border: rgba(61, 53, 51, 0.08);
+  --chat-date-badge-text: rgba(61, 53, 51, 0.55);
+  --chat-divider: rgba(61, 53, 51, 0.08);
+  --chat-empty-text: rgba(61, 53, 51, 0.30);
+
+  /* Hero */
+  --hero-supertitle: rgba(61, 53, 51, 0.50);
+  --hero-heading: #3D3533;
+  --hero-subtitle: rgba(61, 53, 51, 0.65);
+  --hero-desc: rgba(61, 53, 51, 0.45);
+  --hero-together-label: rgba(61, 53, 51, 0.40);
+  --hero-together-number: #3D3533;
+  --hero-together-line: rgba(61, 53, 51, 0.16);
+  --hero-together-since: rgba(61, 53, 51, 0.25);
+  --hero-start-date: rgba(61, 53, 51, 0.30);
+  --hero-scroll-text: rgba(61, 53, 51, 0.35);
+  --hero-scroll-line-from: rgba(61, 53, 51, 0.35);
+
+  /* Footer */
+  --footer-bg: #F7F3ED;
+  --footer-border: rgba(61, 53, 51, 0.08);
+  --footer-logo: rgba(61, 53, 51, 0.85);
+  --footer-tagline: rgba(61, 53, 51, 0.40);
+  --footer-link: rgba(61, 53, 51, 0.45);
+  --footer-link-hover: rgba(61, 53, 51, 0.70);
+  --footer-copyright: rgba(61, 53, 51, 0.30);
+
+  /* Card */
+  --card-bg: #FFFFFF;
+  --card-shadow: 0 2px 8px rgba(61, 53, 51, 0.04), 0 8px 20px rgba(61, 53, 51, 0.03);
+
+  /* Timeline */
+  --timeline-line-from: transparent;
+  --timeline-line-via: rgba(61, 53, 51, 0.10);
+  --timeline-dot-bg: rgba(184, 92, 74, 0.35);
+  --timeline-dot-border: rgba(184, 92, 74, 0.25);
+
+  /* Stats */
+  --stats-bar-track: #EDE8E2;
+  --stats-bar-msg: rgba(184, 92, 74, 0.35);
+  --stats-bar-event: rgba(184, 92, 74, 0.50);
+  --stats-event-type-bg: #F7F3ED;
+  --stats-event-type-border: rgba(61, 53, 51, 0.06);
+
+  /* Private */
+  --private-letter-bg: #F7F3ED;
+  --private-letter-border: rgba(61, 53, 51, 0.06);
+
+  /* Modal */
+  --modal-overlay: rgba(61, 53, 51, 0.4);
+  --modal-bg: #FCFAF7;
+  --modal-border: rgba(61, 53, 51, 0.12);
+  --modal-input-border: rgba(61, 53, 51, 0.12);
+  --modal-input-text: rgba(61, 53, 51, 0.75);
+
+  /* Buttons / interactive */
+  --btn-ghost-text: rgba(61, 53, 51, 0.40);
+  --btn-ghost-hover: rgba(61, 53, 51, 0.60);
+  --btn-danger-text: rgba(61, 53, 51, 0.30);
+  --btn-danger-hover: rgba(220, 80, 60, 0.60);
+}
+
+/* ==================== Base Styles ==================== */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== Serif Display (headings) ==================== */
+/* 双主题的「展示标题」字体：英文用 Playfair Display，中文用 Noto Serif SC，
+   兜底到系统宋体。用 `.font-display-serif` 类应用到大标题 / 品牌字。 */
+.font-display-serif {
+  font-family: var(--font-serif-latin), var(--font-serif),
+    ui-serif, "Songti SC", "STSong", "SimSun", Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+.font-display-serif-en {
+  font-family: var(--font-serif-latin), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* ==================== Container ==================== */
+.container-page {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 6rem 7rem 6rem 7rem;
+  position: relative;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .container-page {
+    padding: 4rem 4rem 4rem 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-page {
+    padding: 3rem 2rem 3rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-page {
+    padding: 2rem 1rem 2rem 1rem;
+  }
+}
+
+/* ==================== Cards ==================== */
+.card {
+  background-color: var(--bg-card);
+  border-radius: 0.5rem;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  container-name: card;
+  container-type: inline-size;
+}
+
+[data-theme="light"] .card {
+  box-shadow: 0 1px 3px rgba(61, 53, 51, 0.04), 0 4px 12px rgba(61, 53, 51, 0.03);
+}
+
+.card-interactive {
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.card-interactive:hover .card-icon,
+.card-interactive:hover .card-title,
+.card-interactive:hover .card-text {
+  color: var(--background);
+}
+
+/* ==================== Buttons ==================== */
+.btn-primary {
+  border: 2px solid var(--border-strong);
+  border-radius: 4px;
+  color: var(--foreground);
+  padding: 0.5rem 1.5rem;
+  gap: 0.75rem;
+  transition: border 0.35s ease, color 0.35s ease;
+  display: inline-flex;
+  align-items: center;
+}
+.btn-primary:hover {
+  border-color: var(--foreground);
+  color: var(--foreground);
+}
+
+.btn-square {
+  aspect-ratio: 1/1;
+  height: 3.375rem;
+  background-color: var(--bg-button);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  gap: 1.5rem;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-square:hover {
+  background-color: var(--bg-button-hover);
+}
+
+.btn-dashboard {
+  height: 3.375rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  gap: 1.5rem;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-dashboard:hover {
+  background-color: var(--bg-button);
+}
+
+/* ==================== Chips / Badges ==================== */
+.chip {
+  border-radius: 0.25rem;
+  background-color: var(--bg-button-hover);
+  font-size: 0.75rem;
+  padding: 0 0.5rem;
+  color: var(--text-accent);
+}
+
+.chip-accent {
+  border: 1px solid var(--accent-subtle);
+  background-color: var(--accent-subtle);
+  color: var(--accent);
+}
+
+/* ==================== Separators ==================== */
+.separator {
+  height: 2px;
+  min-height: 2px;
+  background-color: currentColor;
+  opacity: 0.1;
+}
+
+.separator-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,165,116,0.04), transparent);
+}
+
+[data-theme="light"] .separator-glow {
+  background: linear-gradient(90deg, transparent, rgba(201,125,107,0.08), transparent);
+}
+
+/* ==================== Section Headings ==================== */
+.bullet-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.bullet-heading::before {
+  content: "";
+  display: block;
+  width: 0.35em;
+  height: 0.35em;
+  border-radius: 9999px;
+  background-color: currentColor;
+}
+
+/* ==================== Glow Effects ==================== */
+.drop-shadow-neon {
+  filter: drop-shadow(0 0 6px rgba(212,165,116,0.2))
+          drop-shadow(0 0 12px rgba(212,165,116,0.3));
+}
+
+[data-theme="light"] .drop-shadow-neon {
+  filter: drop-shadow(0 0 4px rgba(201,125,107,0.15))
+          drop-shadow(0 0 8px rgba(201,125,107,0.2));
+}
+
+.hover\:drop-shadow-neon:hover {
+  filter: drop-shadow(0 0 6px rgba(212,165,116,0.2))
+          drop-shadow(0 0 12px rgba(212,165,116,0.4))
+          drop-shadow(0 0 24px rgba(212,165,116,0.3));
+}
+
+[data-theme="light"] .hover\:drop-shadow-neon:hover {
+  filter: drop-shadow(0 0 4px rgba(201,125,107,0.2))
+          drop-shadow(0 0 8px rgba(201,125,107,0.35))
+          drop-shadow(0 0 16px rgba(201,125,107,0.25));
+}
+
+/* ==================== Sexy Light Background ==================== */
+.bg-sexy-light {
+  background: conic-gradient(
+    from 45deg,
+    transparent,
+    transparent,
+    rgba(212, 165, 116, 0.01),
+    rgba(212, 165, 116, 0.04),
+    rgba(212, 165, 116, 0.08),
+    rgba(212, 165, 116, 0.12),
+    rgba(212, 165, 116, 0.06),
+    rgba(212, 165, 116, 0.02),
+    transparent,
+    transparent
+  );
+}
+
+[data-theme="light"] .bg-sexy-light {
+  background: conic-gradient(
+    from 45deg,
+    transparent,
+    transparent,
+    rgba(201, 125, 107, 0.02),
+    rgba(201, 125, 107, 0.06),
+    rgba(201, 125, 107, 0.1),
+    rgba(201, 125, 107, 0.08),
+    rgba(201, 125, 107, 0.03),
+    rgba(201, 125, 107, 0.01),
+    transparent,
+    transparent
+  );
+}
+
+/* ==================== Grain / Film Texture ==================== */
+.grain-overlay {
+  position: relative;
+}
+.grain-overlay::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+}
+
+[data-theme="light"] .grain-overlay::after {
+  opacity: 0.025;
+}
+
+/* ==================== Gradient Text ==================== */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-amber {
+  background-image: linear-gradient(135deg, #f0c987, #d4a574, #c97d6b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+[data-theme="light"] .text-gradient-amber {
+  background-image: linear-gradient(135deg, #e8a87c, #c97d6b, #a0524d);
+}
+
+/* ==================== Capsule Buttons ==================== */
+.btn-capsule {
+  border-radius: 980px;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--border-default);
+  transition: border-color 0.35s ease, background-color 0.35s ease;
+}
+.btn-capsule:hover {
+  border-color: var(--border-strong);
+  background-color: var(--bg-button);
+}
+.btn-capsule:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* Global press/active feedback for all interactive elements */
+button:active, a:active {
+  transform: scale(0.97);
+  transition: transform 0.08s ease;
+}
+.card-interactive:active {
+  transform: scale(0.98);
+  transition: transform 0.08s ease;
+}
+
+/* ==================== Gradient Border Card ==================== */
+.gradient-border {
+  position: relative;
+  border-radius: 0.5rem;
+  background: var(--bg-card);
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(212,165,116,0.3), transparent 60%, rgba(212,165,116,0.1));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+[data-theme="light"] .gradient-border::before {
+  background: linear-gradient(135deg, rgba(201,125,107,0.3), transparent 60%, rgba(201,125,107,0.1));
+}
+
+/* ==================== SuperTitle ==================== */
+.supertitle {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* ==================== Capsule Button ==================== */
+.btn-capsule {
+  border-radius: 980px;
+  padding: 10px 22px;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==================== Scrollbar ==================== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-button-hover);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #EDE8E2;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #D0C8BE;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: #B0A89E;
+}
+
+/* ==================== Selection ==================== */
+::selection {
+  background: var(--accent-subtle);
+  color: var(--foreground);
+}
+
+/* ==================== Input / Textarea ==================== */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  background-color: transparent;
+  border: 2px solid var(--border-default);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  transition: border 0.85s ease;
+  color: var(--foreground);
+}
+
+input:focus,
+textarea:focus {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--foreground);
+  outline: none;
+  box-shadow: none;
+}
+
+::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* ==================== Focus Visible ==================== */
+*:focus-visible {
+  outline: 2px solid var(--accent-subtle);
+  outline-offset: 2px;
+}
+
+/* ==================== Reduced Motion ==================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==================== Markdown Content (Love Museum diary) ==================== */
+.prose-museum h1 { font-size: 1.5rem; font-weight: 700; margin: 1.25rem 0 0.75rem; letter-spacing: -0.01em; }
+.prose-museum h2 { font-size: 1.2rem; font-weight: 600; margin: 1rem 0 0.5rem; letter-spacing: -0.005em; }
+.prose-museum h3 { font-size: 1rem; font-weight: 500; margin: 0.75rem 0 0.5rem; }
+.prose-museum p { margin: 0.5rem 0; line-height: 1.75; }
+.prose-museum strong { font-weight: 600; }
+.prose-museum em { font-style: italic; }
+.prose-museum code { font-size: 0.85em; background: var(--bg-button); padding: 0.1em 0.35em; border-radius: 3px; }
+.prose-museum a { text-decoration: underline; opacity: 0.8; transition: opacity 0.2s; }
+.prose-museum a:hover { opacity: 1; }
+.prose-museum ul.md-list { padding-left: 1.25rem; margin: 0.5rem 0; }
+.prose-museum ul.md-list li { margin: 0.2rem 0; list-style-type: disc; }
+.prose-museum ul.md-list li::marker { opacity: 0.4; }
+.prose-museum hr { border: none; border-top: 1px solid var(--border-default); margin: 1.25rem 0; }
+
+/* ==================== Utilities ==================== */
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility tracking-cinema {
+  letter-spacing: 0.3em;
+}
+
+/* Skip rendering offscreen grid cards so a 300+ photo wall doesn't choke
+   the main thread while scrolling. `contain-intrinsic-size` reserves space so
+   the scrollbar stays stable before the browser renders each tile. */
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 400px;
+}
+
+/* Thin scrollbar for chat message area */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 1.5px;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}

@@ -1,0 +1,24 @@
+# 这个仓库要交付到 Linux 容器里跑，行尾必须是 LF。
+#
+# Windows 上如果开着 core.autocrlf=true，git 会在检出时把文本文件写成 CRLF，
+# 而 `COPY docker/entrypoint.sh` 拷的是**工作区**的文件——
+# 于是一个 CRLF 的 shebang（`#!/bin/sh\r`）会让容器启动时报
+# "bad interpreter: No such file or directory"，看起来像 entrypoint 丢了。
+# 这里显式钉死，免得换个机器克隆就复现。
+
+* text=auto eol=lf
+
+# 二进制文件不做行尾转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary
+
+# Windows 专用的批处理反过来需要 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf

@@ -1,0 +1,47 @@
+{
+  "name": "love-archive-core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "自建的恋爱/纪念日档案馆：时间线、双人日记、照片墙、视频、纪念日倒计时、数据统计。",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "seed": "tsx lib/db/seed.ts"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@next/env": "16.2.10",
+    "@tailwindcss/postcss": "^4",
+    "bcryptjs": "^3.0.3",
+    "drizzle-orm": "^0.45.2",
+    "framer-motion": "^12.42.2",
+    "jose": "^6.2.3",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "server-only": "^0.0.1",
+    "sharp": "^0.34.5",
+    "sql.js": "^1.14.1",
+    "tailwindcss": "^4",
+    "tsx": "^4.20.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/sql.js": "^1.4.11",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "typescript": "^5"
+  }
+}
