@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **A self-hosted archive for a relationship — timeline, two-author diary, photo wall, videos, anniversary countdowns.**
-Single container, SQLite on a volume, no cloud, no account, no tracking. Everything stays on your own server.
+Single container, one SQLite file on a volume, no cloud, no account, no tracking. Everything stays on your own server.
 
 > 一个自建的恋爱 / 纪念日档案馆。时间线、双人日记、照片墙、视频、纪念日倒计时、数据统计，
 > 单容器部署，数据全在自己的服务器上。
@@ -13,15 +13,26 @@ Single container, SQLite on a volume, no cloud, no account, no tracking. Everyth
 
 ## 它是什么
 
-和 [immich](https://github.com/immich-app/immich)、[memos](https://github.com/usememos/memos) 同一种东西：
-**装在自己的机器上、只给自己（和另一个人）用的单品**。不是 SaaS，没有注册页，没有多租户。
+有些东西不该寄存在别人的服务器上。
 
-设计起点是「两个人的日记本」——所以是双作者结构：同一天的日记，两个人各写一段，并排显示。
-但这层已经被做成配置项，改成「一个人写，另一个人只读」也只需要填一样的内容。
+第一次说话的那天、拍糊了也舍不得删的照片、吵完架之后写了又改的那段话、
+约好多年以后再一起拆开的信——它们如今散在聊天记录里、旧手机里、各自的记忆里，
+各自老化，各自遗忘。
+
+**love-archive 把它们收回来，放进一个只属于你们两个人的地方。**
+
+它和 [immich](https://github.com/immich-app/immich)、[memos](https://github.com/usememos/memos) 同一种东西：
+**装在自己的机器上、只给自己（和另一个人）用的单品**。不是 SaaS，没有注册页，没有多租户——
+不是「我们承诺不看你的数据」，而是**从头到尾没有一台不属于你的机器经手过它**。
+
+设计起点是「两个人的日记本」：同一天的日记，两个人各写一段，并排放在一起。
+**先落笔的那个人在左边，这个顺序之后不会再变。**
+这层已经被做成配置项——一个人写、另一个人只读，两边填一样的内容就行。
 
 - **没有云依赖**：数据库是一个 SQLite 文件，照片视频是本地目录里的文件。备份 = 复制两个目录。
-- **没有第三方分析**：没有埋点，没有外链字体 CDN（字体在构建期自托管）。
-- **默认锁上门**：整站鉴权墙，未登录连 API 都返回 401。
+  不想要了也很干脆：删掉文件夹，它就消失了，不留副本、不留回执。
+- **没有第三方分析**：没有埋点，没有外链字体 CDN（字体在构建期自托管）。没有人知道你在这里写过什么。
+- **默认把门关上**：整站鉴权墙，未登录连 API 都返回 401。
 
 ## 功能
 
