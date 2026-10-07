@@ -3,11 +3,11 @@
 [![CI](https://github.com/ruzhai/love-archive-core/actions/workflows/ci.yml/badge.svg)](https://github.com/ruzhai/love-archive-core/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**A self-hosted archive for a relationship — timeline, two-author diary, photo wall, videos, anniversary countdowns.**
-Single container, one SQLite file on a volume, no cloud, no account, no tracking. Everything stays on your own server.
+**A self-hosted archive for a relationship** — timeline, two-author diary, photo wall, videos, anniversary countdowns.
+A quiet place to keep the days.
 
-> 一个自建的恋爱 / 纪念日档案馆。时间线、双人日记、照片墙、视频、纪念日倒计时、数据统计，
-> 单容器部署，数据全在自己的服务器上。
+> 一个自建的恋爱 / 纪念日档案馆。时间线、双人日记、照片墙、视频、纪念日倒计时。
+> **两个人的日子，都放在这里。**
 
 ---
 
@@ -15,16 +15,23 @@ Single container, one SQLite file on a volume, no cloud, no account, no tracking
 
 **这里放两个人的日子。**
 
-同一个日子，你写一段，Ta 写一段，两段字迹并排搁着——先落笔的那个人在左边，
-之后不会再变。照片、视频、那些想说却没说出口的话，也都收在这里。
-还可以写一封定好日期的信，锁起来，等那一天到了再一起拆开。
+哪一年的风，哪一夜的月亮，
+第一次说那句话的时候是什么天气——
+日子过得很快，快到许多瞬间还没来得及记住，就已经走远了。
 
-时间照常往前走，屋子里的东西越堆越多。多年以后翻回某一天，
-那天的日记、那天的照片、那天记下的一个瞬间，会重新摆到你面前——
-好像那天从来没有走远。
+所以有了这里。
 
-它不替你美化，也不替你总结，只是安安静静地待在你们自己的地方，
-**替你们记住**。
+同一个日子，你写一段，Ta 写一段，两段字迹并排搁着；
+先落笔的那个人在左边，之后不会再变。
+照片、视频、想说却没说出口的话，也都收在这里。
+还可以写一封定好日期的信，锁起来，等那一天到了再一起拆。
+
+多年以后翻回某一天，那天的字、那天的光、那天记下的一个瞬间，
+会重新摆到你面前——
+像一封寄了很久的信，绕过许多年，终于回到你手里。
+
+日子一直往前走。
+这里替你们，把它们留下来。
 
 ## 功能
 
